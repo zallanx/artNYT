@@ -22,24 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSDate *today = [NSDate date];
-    NSDate *yesterday = [today dateByAddingTimeInterval: -86400.0*1.0]; //Given 7 day difference, not using NSCalendar
-
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyyMMdd"];
-    
     ArticleListRequestModel *requestModel = [[ArticleListRequestModel alloc] init];
-    requestModel.query = @"Modern art";
-    requestModel.articlesToDate = [[ArticleListRequestModel dateFormatter] dateFromString:[dateFormatter stringFromDate:today]];
-    requestModel.articlesFromDate = [[ArticleListRequestModel dateFormatter] dateFromString:[dateFormatter stringFromDate:yesterday]];
-    requestModel.sort = @"newest";
-    //requestModel.pageRequested = @"1";
+
     
     [[APIManager sharedManager] getArticlesWithRequestModel:requestModel success:^(ArticleListResponseModel *responseModel) {
         
         //NSLog(@"true response articke: %@", responseModel.articles);
-        self.articles = (NSArray *)responseModel.articles;
-        NSLog(@"articles: %@", self.articles);
+        //NSLog(@"%@", responseModel.articles);
+        for (ArticleModel *article in responseModel.articles){
+            NSLog(@"article %@", article);
+        }
         
     } failure:^(NSError *error) {
         

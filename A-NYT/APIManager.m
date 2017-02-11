@@ -9,7 +9,7 @@
 #import "APIManager.h"
 #import "Mantle.h"
 
-static NSString *const kArticlesListPath = @"/svc/search/v2/articlesearch.json";
+static NSString *const kArticlesListPath = @"/svc/mostpopular/v2/mostshared/Arts/1.json";
 static NSString *const kApiKey = @"a9d7f3efa1554f7ca48719428e5c1842";
 
 @implementation APIManager

@@ -15,45 +15,11 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     
     return @{
-             @"query": @"q",
-             @"articlesFromDate": @"begin_date",
-             @"articlesToDate": @"end_date",
-             @"sort" : @"sort",
-             //@"pageRequested" : @"page"
+
              };
     
 }
 
-//Date needed for article request
-
-+ (NSDateFormatter *)dateFormatter {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyyMMdd";
-    return dateFormatter;
-}
-
-+ (NSValueTransformer *)articlesFromDateJSONTransformer {
-    
-    //Tells Mantle how the value of a specific JSON field (FromDate) should be transformed during JSON deserialization.
-    
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success,
-                                                                 NSError *__autoreleasing *error) {
-        return [self.dateFormatter dateFromString:dateString];
-    } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
-        return [self.dateFormatter stringFromDate:date];
-    }];
-}
-
-+ (NSValueTransformer *)articlesToDateJSONTransformer {
-    
-    //Tells Mantle how the value of a specific JSON field (ToDate) should be transformed during JSON deserialization.
-    
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {
-        return [self.dateFormatter dateFromString:dateString];
-    } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
-        return [self.dateFormatter stringFromDate:date];
-    }];
-}
 
 
 

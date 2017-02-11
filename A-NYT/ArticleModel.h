@@ -10,9 +10,10 @@
 
 @interface ArticleModel : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *leadParagraph;
 @property (nonatomic, copy) NSString *url;
-@property (nonatomic, copy) NSArray *mediaArray;
+@property (nonatomic, copy) NSString *abstract;
+@property (nonatomic, copy) NSString *articleTitle;
+
 
 
 @end

@@ -13,10 +13,9 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     //Properties of articles
     return @{
-             @"leadParagraph": @"lead_paragraph",
-             @"url": @"web_url",
-             @"mediaArray" : @"multimedia",
-             
+             @"url" : @"url",
+             @"abstract" : @"abstract",
+             @"articleTitle" : @"title",
              };
 }
 
