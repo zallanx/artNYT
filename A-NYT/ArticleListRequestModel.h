@@ -13,6 +13,9 @@
 @property (nonatomic, copy) NSString *query;
 @property (nonatomic, copy) NSDate *articlesFromDate;
 @property (nonatomic, copy) NSDate *articlesToDate;
+@property (nonatomic, copy) NSString *sort;
+//@property (nonatomic, copy) NSString *pageRequested;
+
 
 + (NSDateFormatter *)dateFormatter;
 

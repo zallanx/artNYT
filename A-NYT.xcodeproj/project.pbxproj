@@ -19,7 +19,6 @@
 		6FC661971E4D137700FD5044 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC661961E4D137700FD5044 /* ArticleModel.m */; };
 		6FC6619A1E4D14E900FD5044 /* ArticleListResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC661991E4D14E900FD5044 /* ArticleListResponseModel.m */; };
 		6FC6619D1E4D161B00FD5044 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6619C1E4D161B00FD5044 /* APIManager.m */; };
-		6FC661A11E4D4BA800FD5044 /* ArticleRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC661A01E4D4BA800FD5044 /* ArticleRealm.m */; };
 		84EB47CDE18604D62C23037E /* libPods-A-NYT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8D0FEFF49C1B96544E4EBD /* libPods-A-NYT.a */; };
 /* End PBXBuildFile section */
 
@@ -58,8 +57,6 @@
 		6FC661991E4D14E900FD5044 /* ArticleListResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListResponseModel.m; sourceTree = "<group>"; };
 		6FC6619B1E4D161B00FD5044 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		6FC6619C1E4D161B00FD5044 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
-		6FC6619F1E4D4BA800FD5044 /* ArticleRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleRealm.h; sourceTree = "<group>"; };
-		6FC661A01E4D4BA800FD5044 /* ArticleRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleRealm.m; sourceTree = "<group>"; };
 		7E8D0FEFF49C1B96544E4EBD /* libPods-A-NYT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-A-NYT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0440090F1C6363CB1E9B7B2 /* Pods-A-NYT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A-NYT.release.xcconfig"; path = "Pods/Target Support Files/Pods-A-NYT/Pods-A-NYT.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,24 +165,14 @@
 		6FC661911E4D100D00FD5044 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6FC661921E4D103000FD5044 /* ArticleListRequestModel.h */,
-				6FC661931E4D103000FD5044 /* ArticleListRequestModel.m */,
-				6FC661951E4D137700FD5044 /* ArticleModel.h */,
-				6FC661961E4D137700FD5044 /* ArticleModel.m */,
 				6FC661981E4D14E900FD5044 /* ArticleListResponseModel.h */,
 				6FC661991E4D14E900FD5044 /* ArticleListResponseModel.m */,
-				6FC6619E1E4D4B8C00FD5044 /* Realm Model - Persistence */,
+				6FC661951E4D137700FD5044 /* ArticleModel.h */,
+				6FC661961E4D137700FD5044 /* ArticleModel.m */,
+				6FC661921E4D103000FD5044 /* ArticleListRequestModel.h */,
+				6FC661931E4D103000FD5044 /* ArticleListRequestModel.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		6FC6619E1E4D4B8C00FD5044 /* Realm Model - Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				6FC6619F1E4D4BA800FD5044 /* ArticleRealm.h */,
-				6FC661A01E4D4BA800FD5044 /* ArticleRealm.m */,
-			);
-			name = "Realm Model - Persistence";
 			sourceTree = "<group>";
 		};
 		6FC661A21E4D598700FD5044 /* View Controllers */ = {
@@ -359,7 +346,6 @@
 				6FC6619D1E4D161B00FD5044 /* APIManager.m in Sources */,
 				6FC6616D1E4D0A5A00FD5044 /* AppDelegate.m in Sources */,
 				6FC661901E4D0C8E00FD5044 /* SessionManager.m in Sources */,
-				6FC661A11E4D4BA800FD5044 /* ArticleRealm.m in Sources */,
 				6FC6616A1E4D0A5A00FD5044 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,7 +17,9 @@
     return @{
              @"query": @"q",
              @"articlesFromDate": @"begin_date",
-             @"articlesToDate": @"end_date"
+             @"articlesToDate": @"end_date",
+             @"sort" : @"sort",
+             //@"pageRequested" : @"page"
              };
     
 }

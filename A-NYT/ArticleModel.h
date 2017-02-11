@@ -12,5 +12,7 @@
 
 @property (nonatomic, copy) NSString *leadParagraph;
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSArray *mediaArray;
+
 
 @end

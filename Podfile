@@ -4,6 +4,5 @@ target 'A-NYT' do
 
     pod 'Mantle'
     pod 'AFNetworking'
-    pod 'Realm'
 
 end

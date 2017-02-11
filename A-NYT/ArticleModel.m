@@ -11,9 +11,12 @@
 @implementation ArticleModel
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
+    //Properties of articles
     return @{
              @"leadParagraph": @"lead_paragraph",
-             @"url": @"web_url"
+             @"url": @"web_url",
+             @"mediaArray" : @"multimedia",
+             
              };
 }
 
