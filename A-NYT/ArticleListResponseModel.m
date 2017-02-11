@@ -16,6 +16,7 @@
     return @{
              @"articles" : @"results",
              @"status" : @"status",
+             //@"medias" : @"results.media",
              
              };
 }

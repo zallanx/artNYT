@@ -23,16 +23,10 @@
     [super viewDidLoad];
     
     ArticleListRequestModel *requestModel = [[ArticleListRequestModel alloc] init];
-
-    
     [[APIManager sharedManager] getArticlesWithRequestModel:requestModel success:^(ArticleListResponseModel *responseModel) {
         
-        //NSLog(@"true response articke: %@", responseModel.articles);
-        //NSLog(@"%@", responseModel.articles);
-        for (ArticleModel *article in responseModel.articles){
-            NSLog(@"article %@", article);
-        }
-        
+        self.articles = (NSArray *)responseModel.articles;
+
     } failure:^(NSError *error) {
         
         NSLog(@"%@", error);
@@ -44,10 +38,8 @@
     
 }
 
-- (void)downloadImageFromArticles {
-    
-    
-}
+
+
 
 
 

@@ -13,5 +13,6 @@
 
 @property (nonatomic, copy) NSArray *articles;
 @property (nonatomic, copy) NSString *status;
+//@property (nonatomic, copy) NSArray *medias;
 
 @end

@@ -14,6 +14,6 @@
 @property (nonatomic, copy) NSString *abstract;
 @property (nonatomic, copy) NSString *articleTitle;
 
-
+@property (nonatomic, copy) NSArray *mediaArray;
 
 @end

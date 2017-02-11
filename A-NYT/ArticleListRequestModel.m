@@ -14,6 +14,8 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     
+    // Parameters placed after .json could be added here
+    // NYT Most Shared API does not support this
     return @{
 
              };

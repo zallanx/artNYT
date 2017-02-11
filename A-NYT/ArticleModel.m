@@ -16,6 +16,7 @@
              @"url" : @"url",
              @"abstract" : @"abstract",
              @"articleTitle" : @"title",
+             @"mediaArray" : @"media",
              };
 }
 
