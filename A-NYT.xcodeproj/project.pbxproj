@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FB92E4D1E4FD8540040A878 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB92E4C1E4FD8540040A878 /* PageContentViewController.m */; };
 		6FC6616A1E4D0A5A00FD5044 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC661691E4D0A5A00FD5044 /* main.m */; };
 		6FC6616D1E4D0A5A00FD5044 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6616C1E4D0A5A00FD5044 /* AppDelegate.m */; };
 		6FC661701E4D0A5A00FD5044 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6616F1E4D0A5A00FD5044 /* ViewController.m */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		4AF1FD652D217C5F4E4117CF /* Pods-A-NYT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A-NYT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A-NYT/Pods-A-NYT.debug.xcconfig"; sourceTree = "<group>"; };
+		6FB92E4B1E4FD8540040A878 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		6FB92E4C1E4FD8540040A878 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		6FC661651E4D0A5A00FD5044 /* A-NYT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A-NYT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FC661691E4D0A5A00FD5044 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6FC6616B1E4D0A5A00FD5044 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 			children = (
 				6FC6616E1E4D0A5A00FD5044 /* ViewController.h */,
 				6FC6616F1E4D0A5A00FD5044 /* ViewController.m */,
+				6FB92E4B1E4FD8540040A878 /* PageContentViewController.h */,
+				6FB92E4C1E4FD8540040A878 /* PageContentViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 			files = (
 				6FC661941E4D103000FD5044 /* ArticleListRequestModel.m in Sources */,
 				6FC6619A1E4D14E900FD5044 /* ArticleListResponseModel.m in Sources */,
+				6FB92E4D1E4FD8540040A878 /* PageContentViewController.m in Sources */,
 				6FC661701E4D0A5A00FD5044 /* ViewController.m in Sources */,
 				6FC661971E4D137700FD5044 /* ArticleModel.m in Sources */,
 				6FC6619D1E4D161B00FD5044 /* APIManager.m in Sources */,
