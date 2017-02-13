@@ -27,11 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self placeTextContentOnScreen];
     
     self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [self.view addSubview:self.headerImageView];
     
+    [self placeTextContentOnScreen];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -47,6 +47,13 @@
     DesignElements *designDictionary = [[DesignElements alloc] init];
     self.view.backgroundColor = designDictionary.backgroundColor;
     
+    assetBuffer = 20;
+    
+    // Default NYT asset image format is "threeByTwo"
+    // The width of the image is set to aspect fill the view width
+    
+    float titleStartingPointX = self.view.frame.size.width*0.10;
+    float titleStartingPointY = self.view.frame.size.width*0.6666 + (assetBuffer*2);
     
     self.titleLabel = [[UILabel alloc] init];
     NSString *displayTitle = [self.article.articleTitle stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
@@ -54,12 +61,11 @@
     self.titleLabel.textColor = [designDictionary.titleTextAttributes objectForKey:@"textColor"];
     self.titleLabel.font = [designDictionary.titleTextAttributes objectForKey:@"font"];
     self.titleLabel.numberOfLines = 0;
-    self.titleLabel.frame = CGRectMake(0, 0, self.view.frame.size.width*0.80, self.titleLabel.intrinsicContentSize.height);
-    self.titleLabel.center = self.view.center;
+    self.titleLabel.frame = CGRectMake(titleStartingPointX, titleStartingPointY, self.view.frame.size.width*0.80, self.titleLabel.intrinsicContentSize.height);
     [self.titleLabel sizeToFit];
     [self.view addSubview:self.titleLabel];
     
-    assetBuffer = 20;
+    
     
     self.bodyLabel = [[UILabel alloc] init];
     self.bodyLabel.text = self.article.abstract;

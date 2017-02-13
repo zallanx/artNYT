@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self prefersStatusBarHidden];
     
     ArticleListRequestModel *requestModel = [[ArticleListRequestModel alloc] init];
     [[APIManager sharedManager] getArticlesWithRequestModel:requestModel success:^(ArticleListResponseModel *responseModel) {
@@ -129,6 +130,10 @@
     return 0;
 }
 
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 
 

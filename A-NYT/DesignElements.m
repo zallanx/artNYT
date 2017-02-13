@@ -9,6 +9,8 @@
 #import "DesignElements.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define IS_IPHONE_4 (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)480) < DBL_EPSILON)
+#define IS_IPHONE_5 (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)568) < DBL_EPSILON)
 
 @implementation DesignElements
 
@@ -25,17 +27,28 @@
 
 - (NSDictionary *)configureTitleTextAttributes
 {
+    
+    float fontSize = 32.0;
+    if (IS_IPHONE_4 || IS_IPHONE_5){
+        fontSize = 24.0;
+    }
+    
     return @{
              @"textColor" : UIColorFromRGB(0xffffff),
-             @"font" : [UIFont fontWithName:@"Futura-CondensedMedium" size:32.0],
+             @"font" : [UIFont fontWithName:@"Futura-CondensedMedium" size:fontSize],
              };
 }
 
 - (NSDictionary *)configureBodyTextAttributes
 {
+    float fontSize = 16.0;
+    if (IS_IPHONE_4 || IS_IPHONE_5){
+        fontSize = 14.0;
+    }
+    
     return @{
              @"textColor" : UIColorFromRGB(0xdedede),
-             @"font" : [UIFont fontWithName:@"Palatino-Roman" size:16.0],
+             @"font" : [UIFont fontWithName:@"Palatino-Roman" size:fontSize],
              };
 }
 
