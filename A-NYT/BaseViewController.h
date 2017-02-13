@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PageContentViewController.h"
 
-@interface ViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface BaseViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
-@property (nonatomic, strong) NSArray *articles;
+@property (nonatomic, copy) NSArray *articles;
+@property (nonatomic, copy) NSArray *rewardColors;
 
 - (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index;
 

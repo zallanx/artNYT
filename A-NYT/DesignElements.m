@@ -47,7 +47,7 @@
     }
     
     return @{
-             @"textColor" : UIColorFromRGB(0xdedede),
+             @"textColor" : UIColorFromRGB(0xffffff),
              @"font" : [UIFont fontWithName:@"Palatino-Roman" size:fontSize],
              };
 }

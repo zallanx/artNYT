@@ -6,28 +6,40 @@
 //  Copyright © 2017 Allan Zhang. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BaseViewController.h"
 #import "ArticleListRequestModel.h"
 #import "APIManager.h"
 #import "DesignElements.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface ViewController ()
+@interface BaseViewController ()
+
+@property (strong, nonatomic) NSMutableArray *readArticlesURL;
 
 @end
 
-@implementation ViewController
+@implementation BaseViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self prefersStatusBarHidden];
+    self.readArticlesURL = [[NSMutableArray alloc] init];
+    self.rewardColors = @[UIColorFromRGB(0x4c339f), UIColorFromRGB(0xf04a58), UIColorFromRGB(0x0b674e), UIColorFromRGB(0xA45976), UIColorFromRGB(0x0e87c4)];
+    
+    
+    // Retrives articles from the NYT Art's Most Emailed section. If no articles are successfully
+    // retrived, then use the placeholder article and image. Set up number of pages using
+    // UIPageViewController depending on number of articles retrieved.
     
     ArticleListRequestModel *requestModel = [[ArticleListRequestModel alloc] init];
     [[APIManager sharedManager] getArticlesWithRequestModel:requestModel success:^(ArticleListResponseModel *responseModel) {
     
+        NSLog(@"Success. Found %lu art", (unsigned long)self.articles.count);
+        
         NSArray *articleArray = (NSArray *)responseModel.articles;
         self.articles = [articleArray subarrayWithRange:NSMakeRange(0, MIN(5, articleArray.count))];
-        NSLog(@"Success. Found %lu art", (unsigned long)self.articles.count);
         [self setupPagination];
 
     } failure:^(NSError *error) {
@@ -37,9 +49,41 @@
          [self setupPagination];
         
     }];
+    
+    [self addNotifications];
+   
+    
 }
 
+- (void)addNotifications
+{
+    //Keep track of articles read status. If all articles are read for the day, display a reward visual.
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidBecomeActiveNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(checkArticlesReadStatus)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"articleRead" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processNotification:) name:@"articleRead" object:nil];
+}
 
+- (void)processNotification: (NSNotification *)sender {
+    if ([sender.name isEqualToString:@"articleRead"]){
+        NSDictionary *userInfo = sender.userInfo;
+        NSString *readArticleUrl = [userInfo objectForKey:@"url"];
+        if (![self.readArticlesURL containsObject:readArticleUrl]){
+            [self.readArticlesURL addObject:readArticleUrl];
+        }
+    }
+    
+
+}
+
+- (void)checkArticlesReadStatus {
+    NSLog(@"Just got activated!");
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -47,6 +91,7 @@
     
     DesignElements *designDictionary = [[DesignElements alloc] init];
     self.view.backgroundColor = designDictionary.backgroundColor;
+    
     
 }
 
@@ -78,7 +123,7 @@
 }
 
 #pragma mark - Page View Datasource Methods
-//11. page view methods
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
@@ -116,6 +161,7 @@
     pageContentViewController.article = self.articles[index];
     pageContentViewController.pageIndex = index;
     pageContentViewController.view.tag = index;
+    pageContentViewController.rewardColor = self.rewardColors[index];
 
     return pageContentViewController;
 }

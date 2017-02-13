@@ -14,6 +14,7 @@
 
 @property  NSUInteger pageIndex;
 
-@property (strong, nonatomic) ArticleModel *article;
+@property (copy, nonatomic) ArticleModel *article;
+@property (copy, nonatomic) UIColor *rewardColor;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PageContentViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "BaseViewController.h"
 
 
 @interface PageContentViewController ()
@@ -71,6 +72,7 @@
     self.bodyLabel.text = self.article.abstract;
     self.bodyLabel.textColor = [designDictionary.bodyTextAttributes objectForKey:@"textColor"];
     self.bodyLabel.font = [designDictionary.bodyTextAttributes objectForKey:@"font"];
+    self.bodyLabel.alpha = 0.80;
     self.bodyLabel.numberOfLines = 0;
     self.bodyLabel.frame = CGRectMake(self.titleLabel.frame.origin.x,
                                       self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + assetBuffer,
@@ -83,7 +85,8 @@
     self.readMoreButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.readMoreButton addTarget:self action:@selector(tappedOnReadMore:) forControlEvents:UIControlEventTouchUpInside];
     [self.readMoreButton setTitle:@"READ MORE" forState:UIControlStateNormal];
-    self.readMoreButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    //self.readMoreButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    self.readMoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.readMoreButton.titleLabel.font = [designDictionary.buttonTextAttributes objectForKey:@"font"];
     [self.readMoreButton setTitleColor:[designDictionary.buttonTextAttributes objectForKey:@"titleColor"] forState:UIControlStateNormal];
     [self.readMoreButton setTitleColor:[designDictionary.buttonTextAttributes objectForKey:@"highlightColor"] forState:UIControlStateHighlighted];
@@ -110,6 +113,9 @@
         NSDictionary *largestAsset = mediaMetadata.lastObject;
         NSString *largestAssetURL = [largestAsset objectForKey:@"url"];
         [self downloadAssetFromURL:[NSURL URLWithString:largestAssetURL]];
+    } else {
+        self.headerImageView.image = [UIImage imageNamed:@"placeholder"];
+        self.headerImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width*0.6666);
     }
     
 }
@@ -119,7 +125,7 @@
     NSURLRequest *imageDownloadRequest = [NSURLRequest requestWithURL:assetURL];
     
     __unsafe_unretained typeof(self) weakSelf = self;
-    [self.headerImageView setImageWithURLRequest:imageDownloadRequest placeholderImage:nil success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+    [self.headerImageView setImageWithURLRequest:imageDownloadRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
         
         weakSelf.headerImageView.image = image;
         weakSelf.headerImageView.frame = CGRectMake(0, 0, weakSelf.view.frame.size.width, (image.size.height/image.size.width)*weakSelf.view.frame.size.width);
@@ -131,7 +137,8 @@
 }
 
 - (void)repositionText {
-
+    
+    //In case asset is not of twoByThree size, repositions image to follow new image's size
         self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x,
                                            self.headerImageView.frame.size.height + (assetBuffer*2),
                                            self.titleLabel.frame.size.width,
@@ -160,11 +167,23 @@
     NSURL *url = [NSURL URLWithString:articleURL];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-        
+            [self markArticleAsRead];
         }];
     }
 }
 
+- (void)markArticleAsRead {
+    
+    NSDictionary *userInfo = @{@"url" : self.article.url};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"articleRead" object:self userInfo:userInfo];
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        self.view.backgroundColor = self.rewardColor;
+        [self.readMoreButton setTitle:@"READ!" forState:UIControlStateNormal];
+        [self.readMoreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+    }];
+}
 
 
 @end
