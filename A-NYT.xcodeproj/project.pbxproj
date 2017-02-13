@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FAF774C1E5105F900CE6345 /* DesignElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF774B1E5105F900CE6345 /* DesignElements.m */; };
 		6FB92E4D1E4FD8540040A878 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB92E4C1E4FD8540040A878 /* PageContentViewController.m */; };
 		6FC6616A1E4D0A5A00FD5044 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC661691E4D0A5A00FD5044 /* main.m */; };
 		6FC6616D1E4D0A5A00FD5044 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6616C1E4D0A5A00FD5044 /* AppDelegate.m */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		4AF1FD652D217C5F4E4117CF /* Pods-A-NYT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A-NYT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A-NYT/Pods-A-NYT.debug.xcconfig"; sourceTree = "<group>"; };
+		6FAF774A1E5105F900CE6345 /* DesignElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignElements.h; sourceTree = "<group>"; };
+		6FAF774B1E5105F900CE6345 /* DesignElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignElements.m; sourceTree = "<group>"; };
 		6FB92E4B1E4FD8540040A878 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		6FB92E4C1E4FD8540040A878 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		6FC661651E4D0A5A00FD5044 /* A-NYT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A-NYT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +103,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6FAF774D1E510D5B00CE6345 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6FAF774A1E5105F900CE6345 /* DesignElements.h */,
+				6FAF774B1E5105F900CE6345 /* DesignElements.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6FC6615C1E4D0A5A00FD5044 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 				6FC6618D1E4D0C6D00FD5044 /* Networking */,
 				6FC661911E4D100D00FD5044 /* Model */,
 				6FC661A21E4D598700FD5044 /* View Controllers */,
+				6FAF774D1E510D5B00CE6345 /* View */,
 				6FC661711E4D0A5A00FD5044 /* Main.storyboard */,
 				6FC661741E4D0A5A00FD5044 /* Assets.xcassets */,
 				6FC661761E4D0A5A00FD5044 /* LaunchScreen.storyboard */,
@@ -350,6 +363,7 @@
 				6FC661701E4D0A5A00FD5044 /* ViewController.m in Sources */,
 				6FC661971E4D137700FD5044 /* ArticleModel.m in Sources */,
 				6FC6619D1E4D161B00FD5044 /* APIManager.m in Sources */,
+				6FAF774C1E5105F900CE6345 /* DesignElements.m in Sources */,
 				6FC6616D1E4D0A5A00FD5044 /* AppDelegate.m in Sources */,
 				6FC661901E4D0C8E00FD5044 /* SessionManager.m in Sources */,
 				6FC6616A1E4D0A5A00FD5044 /* main.m in Sources */,

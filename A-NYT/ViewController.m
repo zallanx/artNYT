@@ -9,11 +9,10 @@
 #import "ViewController.h"
 #import "ArticleListRequestModel.h"
 #import "APIManager.h"
+#import "DesignElements.h"
 
 
 @interface ViewController ()
-
-
 
 @end
 
@@ -24,20 +23,29 @@
     
     ArticleListRequestModel *requestModel = [[ArticleListRequestModel alloc] init];
     [[APIManager sharedManager] getArticlesWithRequestModel:requestModel success:^(ArticleListResponseModel *responseModel) {
-        
-        self.articles = (NSArray *)responseModel.articles;
+    
+        NSArray *articleArray = (NSArray *)responseModel.articles;
+        self.articles = [articleArray subarrayWithRange:NSMakeRange(0, MIN(5, articleArray.count))];
+        NSLog(@"Success. Found %lu art", (unsigned long)self.articles.count);
         [self setupPagination];
 
     } failure:^(NSError *error) {
         
-        NSLog(@"%@", error);
-        
-        //Find previous articles.
-        //If no previous articles, show warning about inability to connect to internet
+        NSLog(@"Found an error%@", error);
+        self.articles = @[[self makeAPlaceholderArticle]];
+         [self setupPagination];
         
     }];
+}
+
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    
+    DesignElements *designDictionary = [[DesignElements alloc] init];
+    self.view.backgroundColor = designDictionary.backgroundColor;
     
 }
 
@@ -56,6 +64,16 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
 
+}
+
+- (ArticleModel *)makeAPlaceholderArticle
+{
+    ArticleModel *placeholderArticle = [[ArticleModel alloc] init];
+    placeholderArticle.articleTitle = @"Art can be offline, too";
+    placeholderArticle.abstract = @"While you are not connected to the internet, you can explore galleries and museums around you to discover new art.";
+    placeholderArticle.url = nil;
+    placeholderArticle.mediaArray = nil;
+    return placeholderArticle;
 }
 
 #pragma mark - Page View Datasource Methods

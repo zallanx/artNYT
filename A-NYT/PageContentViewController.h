@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ArticleModel.h"
+#import "DesignElements.h"
 
 @interface PageContentViewController : UIViewController
 
